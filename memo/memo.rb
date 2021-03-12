@@ -55,3 +55,11 @@ Rails.application.routes.draw do
   get 'tweets/index'
 end
 
+
+コントローラーを作成
+コントローラーを3つ作成
+
+ターミナル
+% rails g controller users
+% rails g controller tweets
+% rails g controller contacts
