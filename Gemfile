@@ -52,3 +52,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "gretel"  # 追加  リンクを設置したリストを画面に表示する機能を実装できる
