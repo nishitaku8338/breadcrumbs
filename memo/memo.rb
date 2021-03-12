@@ -94,3 +94,40 @@ gazou3.png
 gazou4.png
 
 
+パンくずの設定を行う
+パンくずの親子関係を設定するファイルを作成
+下記コマンドを実行
+
+ターミナル
+% rails g gretel:install
+
+以下のファイルが生成されれば成功です。
+config/breadcrumbs.rb
+
+crumb :xx do ... endの「do」と「end」の間に、
+アクセスしたいビューのパスや親要素を指定する。
+
+記述方法は以下になる。
+【例】confing/breadcrumbs.rb
+crumb "現在のページ名（表示させるビューにもページ名記述）" do
+  link "パンくずリストでの表示名", "アクセスしたいページのパス"
+  parent :親要素のページ名（前のページ）
+end
+
+作成したファイルを、下記のように編集
+config/breadcrumbs.rb
+crumb :root do
+  link "Home", root_path
+end
+
+crumb :tweets do
+  link "ツイート一覧", tweets_index_path
+  parent :root
+end
+
+crumb :contacts do
+  link "コンタクト", contacts_index_path
+  parent :tweets
+end
+
+
