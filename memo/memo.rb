@@ -40,3 +40,18 @@ gem "gretel"
 今回は、「users」「tweets」「contacts」の3つのコントローラーを作成し、
 各indexファイルを「users」「tweets」「contacts」の順で階層を分けて、
 パンくずを実装する。
+
+
+
+ルーティングを設定
+ルートパスは「users」のindexに設定して、
+「tweets」と「contacts」は、
+画面表示できるように設定する。
+
+config/routes.rb
+Rails.application.routes.draw do
+  root 'users#index'
+  get 'contacts/index'
+  get 'tweets/index'
+end
+
