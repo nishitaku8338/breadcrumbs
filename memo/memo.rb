@@ -131,3 +131,54 @@ crumb :contacts do
 end
 
 
+
+ビューを編集
+application.html.erbを下記のように編集
+views/layouts/application.html.erb
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Breadcrumb</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <%= breadcrumbs separator: " &rsaquo; " %>  ###追加###
+  <%= yield %>
+</body>
+</html>
+
+今回の記述により、breadcrumbs.rbファイルで、
+実装したパンくずが画面に表示される。
+# separator: " &rsaquo;”は、パンくず間の区切りである「>」を示します。
+
+各indexファイルの編集を行う。
+# app/views/users/index.html.erb
+# <h1>Users#index</h1>
+# <p><%= link_to "ツイートへ", tweets_index_path %></p>
+# <% breadcrumb :root %>
+
+app/views/tweets/index.html.erb
+# <h1>Tweets#index</h1>
+# <p><%= link_to "コンタクトへ", contacts_index_path %></p>
+# <% breadcrumb :tweets %>
+
+app/views/contacts/index.html.erb
+# <h1>Contacts#index</h1>
+# <p>Find me in app/views/contacts/index.html.erb</p>
+# <% breadcrumb :contacts %>
+
+3行目にbreadcrumbs.rbで設定した、ページ名を記述している。
+
+
+ブラウザで確認
+ここまで実装できたらサーバーを再起動させ、
+localhost:3000に接続して確かめる。
+
+要点チェック
+パンくずとは、ユーザーの位置をわかりやすく示すためにWebページを階層順にして、
+リンクを設置したリストを画面に表示させる機能のこと
+
+パンくずは、親子関係を設定することで、リンクを残すことができること
