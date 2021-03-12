@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'users#index'      # ルートパスは「users」のindexに設定
+  get 'contacts/index'    # 画面表示できるように設定
+  get 'tweets/index'      # 画面表示できるように設定
 end
