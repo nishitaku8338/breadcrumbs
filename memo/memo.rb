@@ -63,3 +63,34 @@ end
 % rails g controller users
 % rails g controller tweets
 % rails g controller contacts
+
+
+パンくずのリストを表示する、ビューを作成する
+app/views/users/index.html.erb
+<h1>Users#index</h1>
+<p><%= link_to "ツイートへ", tweets_index_path %></p>
+
+app/views/tweets/index.html.erb
+<h1>Tweets#index</h1>
+<p><%= link_to "コンタクトへ", contacts_index_path %></p>
+
+app/views/contacts/index.html.erb
+<h1>Contacts#index</h1>
+<p>Find me in app/views/contacts/index.html.erb</p>
+
+
+ここまで実装できたら、
+サーバーを立ち上げlocalhost:3000に接続して確かめる。
+
+以下のような表示がされていれば成功。
+gazou2.png
+
+上記図の「ツイートへ」をクリックすると、
+下記図の「Tweets#index」へ遷移する。
+gazou3.png
+
+上記図の「コンタクトへ」をクリックすると、
+下記図の「Contacts#index」へ遷移します。
+gazou4.png
+
+
